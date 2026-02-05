@@ -64,7 +64,7 @@ const Header = () => {
     return (
         <Nav>
             <Logo>
-                MÁRCIO<span>.</span>R
+                ♟️ MÁRCIO<span>.FED</span>
             </Logo>
             <NavLinks>
                 <NavLink><a href="#sobre">Sobre</a></NavLink>
