@@ -5,7 +5,8 @@ import { GlobalStyles } from './styles/GlobalStyles';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
-import Projects from './components/Projects'; // Importação adicionada
+import Projects from './components/Projects';
+import Footer from './components/Footer'; // Importação final
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
       <main>
         <Hero />
         <Skills />
-        <Projects /> {/* Seção de Projetos adicionada */}
+        <Projects />
       </main>
+      <Footer /> {/* Portfólio concluído! */}
     </ThemeProvider>
   );
 }
