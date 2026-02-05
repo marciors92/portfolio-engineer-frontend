@@ -52,9 +52,9 @@ const Copyright = styled.div`
 const Footer = () => {
     return (
         <FooterContainer id="contato">
-            <ContactTitle>Fim de Jogo? Vamos Conversar!</ContactTitle>
+            <ContactTitle>Xeque-mate?</ContactTitle>
             <ContactText>
-                Estou sempre à procura da próxima grande jogada técnica. Entre em contacto:
+                Àqueles em busca da próxima jogada técnica, entre em contato:
             </ContactText>
 
             <SocialLinks>
