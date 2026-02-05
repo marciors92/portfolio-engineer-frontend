@@ -4,7 +4,8 @@ import { chessTheme } from './styles/theme';
 import { GlobalStyles } from './styles/GlobalStyles';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Skills from './components/Skills'; // Importação adicionada
+import Skills from './components/Skills';
+import Projects from './components/Projects'; // Importação adicionada
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Skills /> {/* Seção de Habilidades adicionada */}
+        <Skills />
+        <Projects /> {/* Seção de Projetos adicionada */}
       </main>
     </ThemeProvider>
   );
