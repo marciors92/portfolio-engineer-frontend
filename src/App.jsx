@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { chessTheme } from './styles/theme';
+import { GlobalStyles } from './styles/GlobalStyles';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider theme={chessTheme}>
+      <GlobalStyles />
+      <header style={{ padding: '2rem', textAlign: 'center', borderBottom: `1px solid ${chessTheme.colors.woodDark}` }}>
+        <h1>Márcio Rodrigues</h1>
+        <p>Engenheiro Front-End | Estrategista de Código</p>
+      </header>
+
+      <main>
+        <section style={{ height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <h2 style={{ opacity: 0.7 }}>O Tabuleiro está sendo montado...</h2>
+        </section>
+      </main>
+
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
