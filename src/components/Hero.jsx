@@ -24,11 +24,10 @@ const HeroSection = styled.section`
   border-bottom: 4px solid ${({ theme }) => theme.colors.accent};
 
   @media (max-width: 768px) {
-    /* CORREÇÃO CRUCIAL: Navegadores mobile falham com 'fixed' */
     background-attachment: scroll; 
-    padding-top: 140px; /* Garante espaço abaixo do Header */
-    min-height: 100vh; /* Força o preenchimento da tela */
-    display: flex !important; /* Garante que o container não seja ocultado */
+    padding-top: 140px; 
+    min-height: 100vh; 
+    display: flex !important; 
     visibility: visible !important;
   }
 `;
@@ -46,24 +45,29 @@ const Badge = styled.span`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  line-height: 1.1;
-  max-width: 900px;
+  /* AJUSTE: Fonte secundária e alinhamento mais denso */
+  font-family: ${({ theme }) => theme.fonts.secondary}; 
+  font-size: clamp(2.2rem, 8vw, 4.2rem);
+  line-height: 1.0; 
+  max-width: 850px;
   color: ${({ theme }) => theme.colors.ivoryLight};
+  margin: 0 auto;
   
   span {
     color: ${({ theme }) => theme.colors.ivoryDark};
     font-style: italic;
     display: block;
+    margin-top: 8px; /* Redução do espaçamento interno */
   }
 `;
 
 const Subtitle = styled.p`
   font-size: 1.1rem;
   color: ${({ theme }) => theme.colors.ivoryLight};
-  max-width: 650px;
-  margin-top: 2rem;
-  line-height: 1.6;
+  max-width: 600px;
+  margin-top: 1.5rem; /* Redução da distância para o título */
+  line-height: 1.5;
+  opacity: 0.9;
 `;
 
 const Hero = () => {
