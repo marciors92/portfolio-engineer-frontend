@@ -14,27 +14,48 @@ const ContactTitle = styled.h2`
   color: ${({ theme }) => theme.colors.ivoryLight};
   margin-bottom: 10px;
   font-size: 2rem;
+  margin-top: 20px;
 `;
 
-/* ADIÇÃO: Container para o GIF com borda estilizada */
+/* Ajuste no Wrapper para incluir o texto dentro da moldura */
 const GifWrapper = styled.div`
   margin: 20px auto 30px;
-  max-width: 400px;
+  max-width: 500px; // Aumentado levemente para acomodar melhor o texto
   border: 3px solid ${({ theme }) => theme.colors.woodDark};
   outline: 1px solid ${({ theme }) => theme.colors.accent};
   outline-offset: 5px;
-  padding: 5px;
+  padding: 15px; // Aumentado para dar respiro ao texto
   border-radius: 4px;
-  line-height: 0; // Remove espaço extra abaixo da imagem
+  background-color: rgba(0, 0, 0, 0.2);
   
   img {
     width: 100%;
     height: auto;
-    filter: sepia(0.3) contrast(1.1); // Leve efeito para combinar com o tom marfim
+    border-radius: 2px;
+    margin-bottom: 15px;
+    filter: sepia(0.2) contrast(1.1);
   }
 
   @media (max-width: 480px) {
-    max-width: 90%;
+    max-width: 95%;
+  }
+`;
+
+/* Novo estilo para a curiosidade (Newsletter) */
+const CuriosityText = styled.div`
+  text-align: justify;
+  color: ${({ theme }) => theme.colors.ivoryDark};
+  font-size: 0.85rem; // Letras pequenas como solicitado
+  line-height: 1.4;
+  font-family: ${({ theme }) => theme.fonts.primary};
+  
+  p {
+    margin-bottom: 10px;
+  }
+
+  strong {
+    color: ${({ theme }) => theme.colors.accent};
+    font-family: ${({ theme }) => theme.fonts.secondary};
   }
 `;
 
@@ -75,12 +96,18 @@ const Copyright = styled.div`
 const Footer = () => {
     return (
         <FooterContainer id="contato">
-            <ContactTitle>Xeque-mate?</ContactTitle>
 
-            {/* ADIÇÃO: O GIF posicionado conforme solicitado */}
             <GifWrapper>
-                <img src={lewisGif} alt="Partida de Xadrez com peças de Lewis" />
+                <img src={lewisGif} alt="Partida de Xadrez com Peças de Lewis" />
+
+                <CuriosityText>
+                    <p>
+                        <strong>O Mistério de Lewis:</strong> Escondidas por mais de 700 anos sob as dunas da Baía de Uig, na Ilha de Lewis à noroeste das Terras Altas da Escócia, estas peças do século XII são o conjunto de xadrez mais famoso do mundo. Entalhadas em marfim de morsa, elas revelam o humor e a hierarquia da Idade Média.
+                    </p>
+                </CuriosityText>
             </GifWrapper>
+
+            <ContactTitle>Xeque-mate?</ContactTitle>
 
             <ContactText>
                 Àqueles em busca da próxima jogada técnica, entre em contato:
