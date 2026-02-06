@@ -8,7 +8,7 @@ import {
 } from 'react-icons/si';
 
 const SkillsSection = styled.section`
-  padding: 60px 10%; 
+  padding: 60px 5%; /* Reduzi levemente o padding lateral para ganhar espaço no mobile */
   background-color: ${({ theme }) => theme.colors.boardWhite};
 `;
 
@@ -22,17 +22,18 @@ const SectionTitle = styled.h2`
 
 const Grid = styled.div`
   display: grid;
-  /* CORREÇÃO: Mantém 4 colunas fixas para preservar o desenho do tabuleiro */
   grid-template-columns: repeat(4, 1fr);
   gap: 0; 
   max-width: 700px; 
+  width: 100%; /* Garante que o grid use a largura disponível */
   margin: 0 auto;
-  border: 3px solid ${({ theme }) => theme.colors.woodDark};
+  border: 2px solid ${({ theme }) => theme.colors.woodDark};
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-sizing: border-box; /* Impede que a borda empurre o container para fora */
 
   @media (max-width: 768px) {
-    /* No mobile, apenas garanti que o container não ultrapasse a largura da tela */
-    max-width: 95%; 
+    width: 100%; /* No mobile, ocupa toda a largura do container pai */
+    max-width: 100%; 
   }
 `;
 
@@ -46,20 +47,24 @@ const SkillCard = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  padding: 10px; /* Reduzi levemente para não apertar no mobile */
+  padding: clamp(5px, 1.5vw, 15px); /* Espaçamento interno dinâmico */
+  box-sizing: border-box;
 
   svg {
-    font-size: clamp(1.2rem, 5vw, 2rem); /* Tamanho responsivo para os ícones */
-    margin-bottom: 8px;
+    /* Diminui o ícone agressivamente conforme a tela encolhe */
+    font-size: clamp(1rem, 6vw, 2rem); 
+    margin-bottom: clamp(2px, 1vw, 8px);
     color: ${({ theme }) => theme.colors.accent};
   }
 
   span {
     font-weight: bold;
-    font-size: clamp(0.5rem, 2vw, 0.7rem); /* Texto ajustável para não quebrar linha */
+    /* Ajusta a fonte para evitar quebra de linha em telas muito pequenas */
+    font-size: clamp(0.45rem, 2.2vw, 0.7rem); 
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
   }
 
   &:hover {
@@ -90,7 +95,6 @@ const Skills = () => {
       <SectionTitle>Minhas Peças (Skills)</SectionTitle>
       <Grid>
         {skills.map((skill, index) => {
-          // Lógica matemática para xadrez: (linha + coluna) % 2
           const row = Math.floor(index / 4);
           const col = index % 4;
           const isDark = (row + col) % 2 !== 0;
