@@ -1,12 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   html {
-    /* Ativa o scroll suave nativo */
+    /* Ativa o scroll suave nativo para uma navegação profissional */
     scroll-behavior: smooth;
     
-    /* Compensa a altura do seu Header (aprox. 80px) */
-    /* Isso impede que o Header cubra o título da seção ao clicar no link */
+    /* Compensa a altura do seu Header fixo para não cobrir os títulos das seções */
     scroll-padding-top: 85px; 
   }
 
@@ -19,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
   }
 
-  /* Personalização da barra de rolagem para combinar com o xadrez */
+  /* Personalização da barra de rolagem com a identidade visual do xadrez */
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -37,5 +36,3 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.colors.accent};
   }
 `;
-
-export default GlobalStyle;

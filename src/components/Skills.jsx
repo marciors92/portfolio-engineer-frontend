@@ -8,63 +8,65 @@ import {
 } from 'react-icons/si';
 
 const SkillsSection = styled.section`
-  padding: 100px 10%;
+  padding: 60px 10%; /* Reduzi o padding vertical de 100px para 60px */
   background-color: ${({ theme }) => theme.colors.boardWhite};
-  color: ${({ theme }) => theme.colors.textContrast};
 `;
 
 const SectionTitle = styled.h2`
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-size: 2.5rem;
-  margin-bottom: 50px;
+  font-size: 2.2rem; /* Título levemente menor */
+  margin-bottom: 40px;
   color: ${({ theme }) => theme.colors.woodDark};
 `;
 
 const Grid = styled.div`
   display: grid;
-  /* Força 4 colunas para o padrão 4x3 */
   grid-template-columns: repeat(4, 1fr);
-  gap: 0; /* Gap zero para as peças se tocarem como um tabuleiro real */
-  max-width: 800px;
+  gap: 0; 
+  /* Reduzi o max-width de 900px para 700px para encolher os quadrados */
+  max-width: 700px; 
   margin: 0 auto;
-  border: 2px solid ${({ theme }) => theme.colors.woodDark};
+  border: 3px solid ${({ theme }) => theme.colors.woodDark};
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile para manter simetria */
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 320px; /* Garante que no mobile também fique compacto */
   }
 `;
 
 const SkillCard = styled.div`
-  /* A cor depende se o índice é par ou ímpar para alternar Branco/Preto */
   background-color: ${(props) => props.isDark ? props.theme.colors.boardBlack : props.theme.colors.ivoryLight};
   color: ${(props) => props.isDark ? props.theme.colors.ivoryLight : props.theme.colors.textContrast};
   
-  aspect-ratio: 1 / 1; /* Quadrado perfeito */
+  aspect-ratio: 1 / 1; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  padding: 20px;
+  padding: 15px; /* Padding menor para ocupar menos espaço */
 
   svg {
-    font-size: 2.5rem;
-    margin-bottom: 12px;
+    /* Ícones levemente menores para harmonia visual */
+    font-size: 2rem; 
+    margin-bottom: 8px;
     color: ${({ theme }) => theme.colors.accent};
   }
 
   span {
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.7rem; /* Fonte menor para caber melhor no espaço reduzido */
     text-transform: uppercase;
     text-align: center;
+    letter-spacing: 1px;
   }
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
     z-index: 2;
-    box-shadow: inset 0 0 0 3px ${({ theme }) => theme.colors.accent};
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.accent};
   }
 `;
 
@@ -89,7 +91,6 @@ const Skills = () => {
       <SectionTitle>Minhas Peças (Skills)</SectionTitle>
       <Grid>
         {skills.map((skill, index) => {
-          // Lógica para alternar cores estilo xadrez em grid de 4 colunas
           const row = Math.floor(index / 4);
           const col = index % 4;
           const isDark = (row + col) % 2 !== 0;

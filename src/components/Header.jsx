@@ -10,11 +10,12 @@ const Nav = styled.nav`
   padding: 1rem 10%;
   background-color: ${({ theme }) => theme.colors.boardBlack};
   border-bottom: 2px solid ${({ theme }) => theme.colors.woodDark};
-  position: fixed; /* Mudança de sticky para fixed garante melhor suporte mobile */
+  position: fixed; /* Fixed garante que o menu acompanhe o scroll */
   width: 100%;
   top: 0;
   left: 0;
   z-index: 2000;
+  box-sizing: border-box; /* Garante que o padding não estoure a largura */
 `;
 
 const Logo = styled.a`
@@ -54,6 +55,8 @@ const NavLinks = styled.ul`
   display: flex;
   list-style: none;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -72,17 +75,24 @@ const NavLinks = styled.ul`
 
 const NavLink = styled.li`
   a {
-    /* ... seus estilos anteriores ... */
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.ivoryDark};
+    text-decoration: none;
     transition: color 0.3s ease;
+    
+    &:hover {
+      color: ${({ theme }) => theme.colors.accent};
+    }
   }
 `;
 
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  // Função para fechar o menu com suavidade
+  // Função para fechar o menu com suavidade no mobile
   const handleLinkClick = () => {
-    // Pequeno timeout para o usuário sentir o feedback do clique
     setTimeout(() => {
       setOpen(false);
     }, 150);
@@ -108,3 +118,6 @@ const Header = () => {
     </Nav>
   );
 };
+
+// ESSENCIAL: Exportação padrão para o App.jsx reconhecer o componente
+export default Header;
