@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import lewisQueen from '../assets/lewis-chess-piece.webp';
 
 const Nav = styled.nav`
   display: flex;
@@ -13,21 +14,29 @@ const Nav = styled.nav`
   z-index: 1000;
 `;
 
-// Alterado de 'div' para 'a' para ser clicável
 const Logo = styled.a`
+  display: flex; // Adicionado para alinhar imagem e texto
+  align-items: center;
+  gap: 10px; // Espaço entre a imagem e o nome
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.5rem;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.ivoryLight};
-  text-decoration: none; // Garante que não apareça sublinhado de link comum
+  text-decoration: none;
   cursor: pointer;
   
+  img {
+    height: 40px;
+    width: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+  }
+
   span {
     color: ${({ theme }) => theme.colors.accent};
   }
 
   &:hover {
-    opacity: 0.8; // Feedback visual sutil ao passar o mouse
+    opacity: 0.8;
   }
 `;
 
@@ -71,9 +80,9 @@ const NavLink = styled.li`
 const Header = () => {
   return (
     <Nav>
-      {/* Adicionado o atributo href para apontar para o topo (#) */}
       <Logo href="#">
-        ♟️ MÁRCIO<span>.FED</span>
+        <img src={lewisQueen} alt="Rainha de Lewis" />
+        MÁRCIO<span>FED</span>
       </Logo>
       <NavLinks>
         <NavLink><a href="#sobre">Sobre</a></NavLink>
