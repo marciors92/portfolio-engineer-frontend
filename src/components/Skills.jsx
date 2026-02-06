@@ -8,31 +8,31 @@ import {
 } from 'react-icons/si';
 
 const SkillsSection = styled.section`
-  padding: 60px 10%; /* Reduzi o padding vertical de 100px para 60px */
+  padding: 60px 10%; 
   background-color: ${({ theme }) => theme.colors.boardWhite};
 `;
 
 const SectionTitle = styled.h2`
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-size: 2.2rem; /* Título levemente menor */
+  font-size: 2.2rem;
   margin-bottom: 40px;
   color: ${({ theme }) => theme.colors.woodDark};
 `;
 
 const Grid = styled.div`
   display: grid;
+  /* CORREÇÃO: Mantém 4 colunas fixas para preservar o desenho do tabuleiro */
   grid-template-columns: repeat(4, 1fr);
   gap: 0; 
-  /* Reduzi o max-width de 900px para 700px para encolher os quadrados */
   max-width: 700px; 
   margin: 0 auto;
   border: 3px solid ${({ theme }) => theme.colors.woodDark};
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 320px; /* Garante que no mobile também fique compacto */
+    /* No mobile, apenas garanti que o container não ultrapasse a largura da tela */
+    max-width: 95%; 
   }
 `;
 
@@ -46,18 +46,17 @@ const SkillCard = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  padding: 15px; /* Padding menor para ocupar menos espaço */
+  padding: 10px; /* Reduzi levemente para não apertar no mobile */
 
   svg {
-    /* Ícones levemente menores para harmonia visual */
-    font-size: 2rem; 
+    font-size: clamp(1.2rem, 5vw, 2rem); /* Tamanho responsivo para os ícones */
     margin-bottom: 8px;
     color: ${({ theme }) => theme.colors.accent};
   }
 
   span {
     font-weight: bold;
-    font-size: 0.7rem; /* Fonte menor para caber melhor no espaço reduzido */
+    font-size: clamp(0.5rem, 2vw, 0.7rem); /* Texto ajustável para não quebrar linha */
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 1px;
@@ -91,6 +90,7 @@ const Skills = () => {
       <SectionTitle>Minhas Peças (Skills)</SectionTitle>
       <Grid>
         {skills.map((skill, index) => {
+          // Lógica matemática para xadrez: (linha + coluna) % 2
           const row = Math.floor(index / 4);
           const col = index % 4;
           const isDark = (row + col) % 2 !== 0;
