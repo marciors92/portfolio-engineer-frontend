@@ -102,7 +102,7 @@ const Footer = () => {
 
                 <CuriosityText>
                     <p>
-                        <strong>O Mistério de Lewis:</strong> Escondidas por mais de 700 anos sob as dunas da Baía de Uig, na Ilha de Lewis à noroeste das Terras Altas da Escócia, estas peças do século XII são o conjunto de xadrez mais famoso do mundo. Entalhadas em marfim de morsa, elas revelam o humor e a hierarquia da Idade Média.
+                        <strong>XADREZ DE LEWIS:</strong> Escondidas por mais de 700 anos sob as dunas da Baía de Uig, na Ilha de Lewis, ao noroeste das Terras Altas da Escócia, estas peças do século XII são o conjunto de xadrez mais famoso do mundo, revelando o humor e a hierarquia da Idade Média.
                     </p>
                 </CuriosityText>
             </GifWrapper>
@@ -121,7 +121,7 @@ const Footer = () => {
             </SocialLinks>
 
             <Copyright>
-                © {new Date().getFullYear()} Márcio Rodrigues <span>•</span> Engenheiro Front-End <span>•</span> Inspirado nas Peças de Lewis
+                © {new Date().getFullYear()} Márcio Rodrigues <span>•</span> Engenheiro Front-End <span>•</span> Inspirado nas peças do Xadrez de Lewis
             </Copyright>
         </FooterContainer>
     );
