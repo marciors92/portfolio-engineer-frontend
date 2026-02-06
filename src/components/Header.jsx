@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react'; // Adicionado useState para controlar o menu
 import styled from 'styled-components';
 import lewisQueen from '../assets/lewis-chess-piece.webp';
+import { FaBars, FaTimes } from 'react-icons/fa'; // Ícones para o menu mobile
 
 const Nav = styled.nav`
   display: flex;
@@ -15,28 +16,37 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.a`
-  display: flex; // Adicionado para alinhar imagem e texto
+  display: flex;
   align-items: center;
-  gap: 10px; // Espaço entre a imagem e o nome
+  gap: 10px;
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.5rem;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.ivoryLight};
   text-decoration: none;
   cursor: pointer;
+  z-index: 1001;
   
   img {
     height: 40px;
     width: auto;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
   }
 
   span {
     color: ${({ theme }) => theme.colors.accent};
   }
+`;
 
-  &:hover {
-    opacity: 0.8;
+// Ícone do Menu Hamburguer
+const MenuIcon = styled.div`
+  display: none;
+  color: ${({ theme }) => theme.colors.ivoryLight};
+  font-size: 1.8rem;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+    z-index: 1001;
   }
 `;
 
@@ -46,7 +56,18 @@ const NavLinks = styled.ul`
   gap: 2rem;
 
   @media (max-width: 768px) {
-    display: none;
+    flex-direction: column;
+    background-color: ${({ theme }) => theme.colors.boardBlack};
+    position: fixed;
+    top: 0;
+    right: ${({ open }) => (open ? '0' : '-100%')}; // Controla a abertura
+    width: 70%;
+    height: 100vh;
+    padding-top: 100px;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -10px 0px 30px rgba(0,0,0,0.5);
+    gap: 3rem;
+    align-items: center;
   }
 `;
 
@@ -57,8 +78,8 @@ const NavLink = styled.li`
     text-transform: uppercase;
     letter-spacing: 1px;
     color: ${({ theme }) => theme.colors.ivoryDark};
-    position: relative;
     text-decoration: none;
+    position: relative;
 
     &::after {
       content: '';
@@ -78,17 +99,24 @@ const NavLink = styled.li`
 `;
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <Nav>
       <Logo href="#">
         <img src={lewisQueen} alt="Rainha de Lewis" />
         MÁRCIO<span>FED</span>
       </Logo>
-      <NavLinks>
-        <NavLink><a href="#sobre">Sobre</a></NavLink>
-        <NavLink><a href="#habilidades">Peças</a></NavLink>
-        <NavLink><a href="#projetos">Jogadas</a></NavLink>
-        <NavLink><a href="#contato">Contato</a></NavLink>
+
+      <MenuIcon onClick={() => setOpen(!open)}>
+        {open ? <FaTimes /> : <FaBars />}
+      </MenuIcon>
+
+      <NavLinks open={open}>
+        <NavLink><a href="#sobre" onClick={() => setOpen(false)}>Sobre</a></NavLink>
+        <NavLink><a href="#habilidades" onClick={() => setOpen(false)}>Peças</a></NavLink>
+        <NavLink><a href="#projetos" onClick={() => setOpen(false)}>Jogadas</a></NavLink>
+        <NavLink><a href="#contato" onClick={() => setOpen(false)}>Contato</a></NavLink>
       </NavLinks>
     </Nav>
   );
