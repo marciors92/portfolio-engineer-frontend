@@ -8,8 +8,14 @@ import {
 } from 'react-icons/si';
 
 const SkillsSection = styled.section`
-  padding: 60px 5%; /* Reduzi levemente o padding lateral para ganhar espaço no mobile */
+  padding: 60px 0; /* Removido padding lateral para evitar empurrar o grid no mobile */
   background-color: ${({ theme }) => theme.colors.boardWhite};
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden; /* Garante que a seção contenha qualquer vazamento */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SectionTitle = styled.h2`
@@ -18,6 +24,7 @@ const SectionTitle = styled.h2`
   font-size: 2.2rem;
   margin-bottom: 40px;
   color: ${({ theme }) => theme.colors.woodDark};
+  padding: 0 20px;
 `;
 
 const Grid = styled.div`
@@ -25,15 +32,15 @@ const Grid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 0; 
   max-width: 700px; 
-  width: 100%; /* Garante que o grid use a largura disponível */
+  width: 90%; /* Ajustado para 90% para dar um respiro lateral automático */
   margin: 0 auto;
   border: 2px solid ${({ theme }) => theme.colors.woodDark};
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  box-sizing: border-box; /* Impede que a borda empurre o container para fora */
+  box-sizing: border-box;
+  overflow: hidden; /* Corta qualquer conteúdo que tente expandir o quadrado */
 
   @media (max-width: 768px) {
-    width: 100%; /* No mobile, ocupa toda a largura do container pai */
-    max-width: 100%; 
+    width: 95%; /* Quase toca as bordas no mobile, mas mantém alinhado */
   }
 `;
 
@@ -47,24 +54,25 @@ const SkillCard = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  padding: clamp(5px, 1.5vw, 15px); /* Espaçamento interno dinâmico */
+  padding: 5px; /* Padding fixo pequeno para priorizar espaço dos ícones */
   box-sizing: border-box;
+  min-width: 0; /* Permite que o flex-item encolha além do conteúdo se necessário */
 
   svg {
-    /* Diminui o ícone agressivamente conforme a tela encolhe */
-    font-size: clamp(1rem, 6vw, 2rem); 
+    font-size: clamp(1rem, 5vw, 2rem); 
     margin-bottom: clamp(2px, 1vw, 8px);
     color: ${({ theme }) => theme.colors.accent};
+    flex-shrink: 0; /* Impede o ícone de amassar */
   }
 
   span {
     font-weight: bold;
-    /* Ajusta a fonte para evitar quebra de linha em telas muito pequenas */
-    font-size: clamp(0.45rem, 2.2vw, 0.7rem); 
+    font-size: clamp(0.4rem, 2vw, 0.7rem); 
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 0.5px;
-    line-height: 1.1;
+    line-height: 1;
+    word-break: break-word; /* Evita que nomes longos empurrem a borda */
   }
 
   &:hover {
