@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import lewisGif from '../assets/lewis-chess-gif.gif';
 
 const FooterContainer = styled.footer`
   padding: 60px 10% 30px;
@@ -13,6 +14,28 @@ const ContactTitle = styled.h2`
   color: ${({ theme }) => theme.colors.ivoryLight};
   margin-bottom: 10px;
   font-size: 2rem;
+`;
+
+/* ADIÇÃO: Container para o GIF com borda estilizada */
+const GifWrapper = styled.div`
+  margin: 20px auto 30px;
+  max-width: 400px;
+  border: 3px solid ${({ theme }) => theme.colors.woodDark};
+  outline: 1px solid ${({ theme }) => theme.colors.accent};
+  outline-offset: 5px;
+  padding: 5px;
+  border-radius: 4px;
+  line-height: 0; // Remove espaço extra abaixo da imagem
+  
+  img {
+    width: 100%;
+    height: auto;
+    filter: sepia(0.3) contrast(1.1); // Leve efeito para combinar com o tom marfim
+  }
+
+  @media (max-width: 480px) {
+    max-width: 90%;
+  }
 `;
 
 const ContactText = styled.p`
@@ -53,6 +76,12 @@ const Footer = () => {
     return (
         <FooterContainer id="contato">
             <ContactTitle>Xeque-mate?</ContactTitle>
+
+            {/* ADIÇÃO: O GIF posicionado conforme solicitado */}
+            <GifWrapper>
+                <img src={lewisGif} alt="Partida de Xadrez com peças de Lewis" />
+            </GifWrapper>
+
             <ContactText>
                 Àqueles em busca da próxima jogada técnica, entre em contato:
             </ContactText>
