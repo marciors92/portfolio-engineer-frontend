@@ -64,14 +64,14 @@ const Skills = () => {
         { name: 'TypeScript', icon: <SiTypescript />, dark: false },
         { name: 'Next.js', icon: <SiNextdotjs />, dark: true },
         { name: 'JavaScript', icon: <SiJavascript />, dark: false },
-        { name: 'Tailwind', icon: <SiTailwindcss />, dark: false },
-        { name: 'Styled Components', icon: <SiStyledcomponents />, dark: true },
+        { name: 'Tailwind', icon: <SiTailwindcss />, dark: true },
+        { name: 'Styled Components', icon: <SiStyledcomponents />, dark: false },
         { name: 'Node.js', icon: <FaNodeJs />, dark: false },
         { name: 'AWS', icon: <FaAws />, dark: true },
-        { name: 'SQL/Postgres', icon: <SiPostgresql />, dark: true },
-        { name: 'Git', icon: <FaGitAlt />, dark: false },
-        { name: 'HTML5', icon: <FaHtml5 />, dark: true },
-        { name: 'CSS3/SASS', icon: <FaCss3Alt />, dark: false },
+        { name: 'SQL/Postgres', icon: <SiPostgresql />, dark: false },
+        { name: 'Git', icon: <FaGitAlt />, dark: true },
+        { name: 'HTML5', icon: <FaHtml5 />, dark: false },
+        { name: 'CSS3/SASS', icon: <FaCss3Alt />, dark: true },
     ];
 
     return (
