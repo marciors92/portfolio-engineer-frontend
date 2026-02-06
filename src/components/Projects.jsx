@@ -41,6 +41,18 @@ const ProjectImage = styled.div`
   color: ${({ theme }) => theme.colors.ivoryDark};
   font-size: 1.5rem;
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  
+  /* ADIÇÃO: Transição suave para o efeito Hover */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+
+  /* ADIÇÃO: Efeito de Hover */
+  &:hover {
+    transform: scale(1.03);
+    border-color: ${({ theme }) => theme.colors.ivoryLight};
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    filter: brightness(1.1);
+  }
 `;
 
 const ProjectInfo = styled.div`
@@ -96,8 +108,6 @@ const ProjectButton = styled.a`
     color: ${({ theme }) => theme.colors.accent};
   }
 `;
-
-// NOVOS ESTILOS PARA O RODAPÉ DA SEÇÃO
 
 const MoreProjectsContainer = styled.div`
   text-align: center;
@@ -181,7 +191,6 @@ const Projects = () => {
                 </ProjectCard>
             ))}
 
-            {/* ADIÇÃO: Bloco para repositório completo */}
             <MoreProjectsContainer>
                 <MoreProjectsText>
                     Deseja visualizar mais jogadas técnicas?
