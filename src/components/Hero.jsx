@@ -3,18 +3,16 @@ import styled from 'styled-components';
 import lewisBg from '../assets/lewis-chess.jpg';
 
 const HeroSection = styled.section`
-  /* Ajustado de 85vh para 100vh para preencher melhor a tela no desktop */
-  min-height: 100vh; 
+  min-height: 100vh; /* Ocupa a tela inteira */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   
-  /* ADIÇÃO: Padding superior para compensar o Header sticky */
+  /* Padding superior no desktop para compensar o Header sticky */
   padding: 100px 10% 60px; 
   
-  /* Configuração do Banner com Imagem */
   background: 
     linear-gradient(
       rgba(26, 26, 26, 0.8), 
@@ -23,15 +21,16 @@ const HeroSection = styled.section`
     url(${lewisBg});
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Efeito Parallax suave */
+  background-attachment: fixed;
   
   border-bottom: 4px solid ${({ theme }) => theme.colors.accent};
 
-  /* AJUSTE MOBILE: Garante que o texto não fique sob o Header no celular */
+  /* AJUSTE MOBILE: Garante que o banner apareça abaixo do Header */
   @media (max-width: 768px) {
-    padding-top: 140px;
+    padding-top: 160px; /* Aumentado para garantir visibilidade total */
     min-height: auto;
-    padding-bottom: 80px;
+    padding-bottom: 100px;
+    background-attachment: scroll; /* Melhora performance em dispositivos móveis */
   }
 `;
 
@@ -48,7 +47,7 @@ const Badge = styled.span`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2.2rem, 8vw, 4.5rem); /* Ajustado levemente para telas menores */
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
   line-height: 1.1;
   max-width: 900px;
   color: ${({ theme }) => theme.colors.ivoryLight};
@@ -62,7 +61,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.1rem; /* Ajuste leve para legibilidade */
+  font-size: 1.1rem;
   color: ${({ theme }) => theme.colors.ivoryLight};
   max-width: 650px;
   margin-top: 2rem;
