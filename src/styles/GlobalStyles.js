@@ -1,56 +1,41 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
-  /* A alteração foi feita aqui: selecionando a tag html */
+const GlobalStyle = createGlobalStyle`
   html {
+    /* Ativa o scroll suave nativo */
     scroll-behavior: smooth;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    
+    /* Compensa a altura do seu Header (aprox. 80px) */
+    /* Isso impede que o Header cubra o título da seção ao clicar no link */
+    scroll-padding-top: 85px; 
   }
 
   body {
+    margin: 0;
+    padding: 0;
+    font-family: ${({ theme }) => theme.fonts.primary};
     background-color: ${({ theme }) => theme.colors.boardBlack};
     color: ${({ theme }) => theme.colors.ivoryLight};
-    font-family: ${({ theme }) => theme.fonts.primary};
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.6;
-    /* Adicionado para garantir que a rolagem suave funcione bem no body */
-    overflow-x: hidden; 
+    overflow-x: hidden;
   }
 
-  h1, h2, h3, h4 {
-    font-family: ${({ theme }) => theme.fonts.secondary};
-    color: ${({ theme }) => theme.colors.ivoryDark};
-    margin-bottom: 1rem;
-  }
-
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.accent};
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: ${({ theme }) => theme.colors.ivoryLight};
-    }
-  }
-
-  button {
-    cursor: pointer;
-    font-family: ${({ theme }) => theme.fonts.primary};
-  }
-
+  /* Personalização da barra de rolagem para combinar com o xadrez */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
+
   ::-webkit-scrollbar-track {
     background: ${({ theme }) => theme.colors.boardBlack};
   }
+
   ::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.woodDark};
-    border-radius: 4px;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.colors.accent};
   }
 `;
+
+export default GlobalStyle;

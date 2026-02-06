@@ -72,20 +72,21 @@ const NavLinks = styled.ul`
 
 const NavLink = styled.li`
   a {
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.ivoryDark};
-    text-decoration: none;
-    
-    &:hover {
-      color: ${({ theme }) => theme.colors.accent};
-    }
+    /* ... seus estilos anteriores ... */
+    transition: color 0.3s ease;
   }
 `;
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+
+  // Função para fechar o menu com suavidade
+  const handleLinkClick = () => {
+    // Pequeno timeout para o usuário sentir o feedback do clique
+    setTimeout(() => {
+      setOpen(false);
+    }, 150);
+  };
 
   return (
     <Nav>
@@ -99,13 +100,11 @@ const Header = () => {
       </MenuIcon>
 
       <NavLinks open={open}>
-        <NavLink><a href="#sobre" onClick={() => setOpen(false)}>Sobre</a></NavLink>
-        <NavLink><a href="#habilidades" onClick={() => setOpen(false)}>Peças</a></NavLink>
-        <NavLink><a href="#projetos" onClick={() => setOpen(false)}>Jogadas</a></NavLink>
-        <NavLink><a href="#contato" onClick={() => setOpen(false)}>Contato</a></NavLink>
+        <NavLink><a href="#sobre" onClick={handleLinkClick}>Sobre</a></NavLink>
+        <NavLink><a href="#habilidades" onClick={handleLinkClick}>Peças</a></NavLink>
+        <NavLink><a href="#projetos" onClick={handleLinkClick}>Jogadas</a></NavLink>
+        <NavLink><a href="#contato" onClick={handleLinkClick}>Contato</a></NavLink>
       </NavLinks>
     </Nav>
   );
 };
-
-export default Header;
