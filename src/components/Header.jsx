@@ -1,18 +1,18 @@
-import React, { useState } from 'react'; // Adicionado useState para controlar o menu
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import lewisQueen from '../assets/lewis-chess-piece.webp';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Ícones para o menu mobile
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 10%;
+  padding: 1rem 10%;
   background-color: ${({ theme }) => theme.colors.boardBlack};
   border-bottom: 2px solid ${({ theme }) => theme.colors.woodDark};
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 2000; /* Garante que fique acima de tudo */
 `;
 
 const Logo = styled.a`
@@ -24,8 +24,7 @@ const Logo = styled.a`
   font-weight: bold;
   color: ${({ theme }) => theme.colors.ivoryLight};
   text-decoration: none;
-  cursor: pointer;
-  z-index: 1001;
+  z-index: 2001;
   
   img {
     height: 40px;
@@ -37,7 +36,6 @@ const Logo = styled.a`
   }
 `;
 
-// Ícone do Menu Hamburguer
 const MenuIcon = styled.div`
   display: none;
   color: ${({ theme }) => theme.colors.ivoryLight};
@@ -46,7 +44,7 @@ const MenuIcon = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    z-index: 1001;
+    z-index: 2001;
   }
 `;
 
@@ -60,14 +58,13 @@ const NavLinks = styled.ul`
     background-color: ${({ theme }) => theme.colors.boardBlack};
     position: fixed;
     top: 0;
-    right: ${({ open }) => (open ? '0' : '-100%')}; // Controla a abertura
-    width: 70%;
+    right: ${({ open }) => (open ? '0' : '-100%')};
+    width: 100%;
     height: 100vh;
-    padding-top: 100px;
-    transition: right 0.3s ease-in-out;
-    box-shadow: -10px 0px 30px rgba(0,0,0,0.5);
-    gap: 3rem;
+    padding-top: 120px;
+    transition: 0.4s ease-in-out;
     align-items: center;
+    gap: 3rem;
   }
 `;
 
@@ -76,24 +73,11 @@ const NavLink = styled.li`
     font-size: 0.9rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
     color: ${({ theme }) => theme.colors.ivoryDark};
     text-decoration: none;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: ${({ theme }) => theme.colors.accent};
-      transition: width 0.3s ease;
-    }
-
-    &:hover::after {
-      width: 100%;
+    
+    &:hover {
+      color: ${({ theme }) => theme.colors.accent};
     }
   }
 `;
