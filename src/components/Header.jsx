@@ -10,9 +10,11 @@ const Nav = styled.nav`
   padding: 1rem 10%;
   background-color: ${({ theme }) => theme.colors.boardBlack};
   border-bottom: 2px solid ${({ theme }) => theme.colors.woodDark};
-  position: sticky; /* Mantém o menu no topo */
+  position: fixed; /* Mudança de sticky para fixed garante melhor suporte mobile */
+  width: 100%;
   top: 0;
-  z-index: 2000; /* Z-index alto para ficar sobre o Hero */
+  left: 0;
+  z-index: 2000;
 `;
 
 const Logo = styled.a`
