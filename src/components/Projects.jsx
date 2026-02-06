@@ -97,6 +97,42 @@ const ProjectButton = styled.a`
   }
 `;
 
+// NOVOS ESTILOS PARA O RODAPÉ DA SEÇÃO
+
+const MoreProjectsContainer = styled.div`
+  text-align: center;
+  margin-top: 40px;
+  padding: 40px;
+  border-top: 1px solid ${({ theme }) => theme.colors.woodDark};
+`;
+
+const MoreProjectsText = styled.p`
+  color: ${({ theme }) => theme.colors.ivoryDark};
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-family: ${({ theme }) => theme.fonts.secondary};
+`;
+
+const GitHubRepoLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.accent};
+  border: 1px solid ${({ theme }) => theme.colors.accent};
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.boardBlack};
+    transform: translateY(-3px);
+  }
+`;
+
 const Projects = () => {
     const myProjects = [
         {
@@ -115,8 +151,8 @@ const Projects = () => {
         },
         {
             title: "Projeto Delivery MFE",
-            desc: "Arquitetura avançada de Micro Frontends para um sistema de delivery, garantindo escalabilidade e independência de módulos.",
-            tech: ["Micro Frontends", "React", "Next.js"],
+            desc: "Arquitetura avançada de Micro Front-ends para um sistema de delivery, garantindo escalabilidade e independência de módulos.",
+            tech: ["Micro Front-ends", "React", "Next.js"],
             link: "https://github.com/marciors92/projeto-delivery-mfe",
             reverse: false
         }
@@ -144,6 +180,20 @@ const Projects = () => {
                     </ProjectInfo>
                 </ProjectCard>
             ))}
+
+            {/* ADIÇÃO: Bloco para repositório completo */}
+            <MoreProjectsContainer>
+                <MoreProjectsText>
+                    Deseja visualizar mais jogadas técnicas?
+                </MoreProjectsText>
+                <GitHubRepoLink
+                    href="https://github.com/marciors92?tab=repositories"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <FaGithub /> Ver Repositório Completo
+                </GitHubRepoLink>
+            </MoreProjectsContainer>
         </ProjectsSection>
     );
 };
