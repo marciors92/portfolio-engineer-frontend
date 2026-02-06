@@ -13,14 +13,21 @@ const Nav = styled.nav`
   z-index: 1000;
 `;
 
-const Logo = styled.div`
+// Alterado de 'div' para 'a' para ser clicável
+const Logo = styled.a`
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.5rem;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.ivoryLight};
+  text-decoration: none; // Garante que não apareça sublinhado de link comum
+  cursor: pointer;
   
   span {
     color: ${({ theme }) => theme.colors.accent};
+  }
+
+  &:hover {
+    opacity: 0.8; // Feedback visual sutil ao passar o mouse
   }
 `;
 
@@ -42,6 +49,7 @@ const NavLink = styled.li`
     letter-spacing: 1px;
     color: ${({ theme }) => theme.colors.ivoryDark};
     position: relative;
+    text-decoration: none;
 
     &::after {
       content: '';
@@ -61,19 +69,20 @@ const NavLink = styled.li`
 `;
 
 const Header = () => {
-    return (
-        <Nav>
-            <Logo>
-                ♟️ MÁRCIO<span>.FED</span>
-            </Logo>
-            <NavLinks>
-                <NavLink><a href="#sobre">Sobre</a></NavLink>
-                <NavLink><a href="#habilidades">Peças</a></NavLink>
-                <NavLink><a href="#projetos">Jogadas</a></NavLink>
-                <NavLink><a href="#contato">Contato</a></NavLink>
-            </NavLinks>
-        </Nav>
-    );
+  return (
+    <Nav>
+      {/* Adicionado o atributo href para apontar para o topo (#) */}
+      <Logo href="#">
+        ♟️ MÁRCIO<span>.FED</span>
+      </Logo>
+      <NavLinks>
+        <NavLink><a href="#sobre">Sobre</a></NavLink>
+        <NavLink><a href="#habilidades">Peças</a></NavLink>
+        <NavLink><a href="#projetos">Jogadas</a></NavLink>
+        <NavLink><a href="#contato">Contato</a></NavLink>
+      </NavLinks>
+    </Nav>
+  );
 };
 
 export default Header;
