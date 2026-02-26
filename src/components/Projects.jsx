@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaGithub } from 'react-icons/fa';
 
+import imgDiario from '../assets/projects/diario de bordo.gif';
+import gifMasterFood from '../assets/projects/masterfood.gif';
+import gifTodoList from '../assets/projects/lista de afazeres.gif';
+import imgPortfolio from '../assets/projects/chess-driven.jpg';
+
 const ProjectsSection = styled.section`
   padding: 100px 10%;
   background-color: ${({ theme }) => theme.colors.boardBlack};
@@ -33,7 +38,7 @@ const ProjectImageContainer = styled.div`
   width: 100%;
   border-radius: 8px;
   border: 4px solid ${({ theme }) => theme.colors.accent};
-  overflow: hidden; /* Garante que a imagem não saia do card */
+  overflow: hidden;
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   background: ${({ theme }) => theme.colors.woodDark};
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -42,7 +47,7 @@ const ProjectImageContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Enquadramento Sênior: preenche sem distorcer */
+    object-fit: cover;
     object-position: center;
     transition: transform 0.5s ease;
   }
@@ -155,7 +160,7 @@ const Projects = () => {
       desc: "Aplicação Web Progressiva (PWA) desenvolvida para registro de atividades diárias, focada em resiliência offline e arquitetura modular. Utiliza Service Workers para suporte offline-first, persistência via LocalStorage e design system customizado com modo escuro.",
       tech: ["PWA", "JavaScript ES6+", "Service Workers", "LocalStorage"],
       link: "https://github.com/marciors92/diario-de-bordo-pwa",
-      image: "/assets/projects/diario-de-bordo.png",
+      image: imgDiario,
       reverse: false
     },
     {
@@ -163,7 +168,7 @@ const Projects = () => {
       desc: "Aplicação de delivery escalável baseada em Micro Front-ends (MFE). Utiliza Webpack 5 e Module Federation para integrar apps independentes, garantindo autonomia de deploy e comunicação via Custom Events.",
       tech: ["Micro Front-ends", "React", "Next.js", "Webpack 5"],
       link: "https://github.com/marciors92/projeto-delivery-mfe",
-      image: "/assets/projects/masterfood.gif",
+      image: gifMasterFood,
       reverse: true
     },
     {
@@ -171,7 +176,7 @@ const Projects = () => {
       desc: "Gerenciamento de tarefas avançado com Context API e Hooks customizados. Implementa Memoization (useMemo/React.memo) para otimização de ciclos de renderização e persistência de dados eficiente.",
       tech: ["React", "Context API", "Hooks", "Memoization"],
       link: "https://github.com/marciors92/todo-list-react-advanced",
-      image: "/assets/projects/lista-de-afazeres.gif",
+      image: gifTodoList,
       reverse: false
     },
     {
@@ -179,7 +184,7 @@ const Projects = () => {
       desc: "Single Page Application de alta performance com grid dinâmico baseado em lógica algorítmica de xadrez. Interface fluida com Styled Components, tipografia adaptativa e foco em engenharia front-end.",
       tech: ["React", "Styled Components", "FEED", "Responsive Design"],
       link: "https://github.com/marciors92/portfolio-engineer-frontend",
-      image: "/assets/projects/chess-driven.jpg",
+      image: imgPortfolio,
       reverse: true
     }
   ];
