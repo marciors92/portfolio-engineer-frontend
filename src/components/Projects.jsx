@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 const ProjectsSection = styled.section`
   padding: 100px 10%;
@@ -27,31 +27,33 @@ const ProjectCard = styled.div`
   }
 `;
 
-const ProjectImage = styled.div`
+const ProjectImageContainer = styled.div`
   flex: 1;
-  background: ${({ theme }) => theme.colors.woodDark};
-  height: 300px;
+  height: 350px;
   width: 100%;
   border-radius: 8px;
   border: 4px solid ${({ theme }) => theme.colors.accent};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: ${({ theme }) => theme.fonts.secondary};
-  color: ${({ theme }) => theme.colors.ivoryDark};
-  font-size: 1.5rem;
+  overflow: hidden; /* Garante que a imagem não saia do card */
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  
-  /* ADIÇÃO: Transição suave para o efeito Hover */
+  background: ${({ theme }) => theme.colors.woodDark};
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
+  position: relative;
 
-  /* ADIÇÃO: Efeito de Hover */
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Enquadramento Sênior: preenche sem distorcer */
+    object-position: center;
+    transition: transform 0.5s ease;
+  }
+
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
     border-color: ${({ theme }) => theme.colors.ivoryLight};
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-    filter: brightness(1.1);
+    
+    img {
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -67,7 +69,8 @@ const ProjectInfo = styled.div`
   p {
     color: ${({ theme }) => theme.colors.ivoryDark};
     margin-bottom: 20px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
 `;
 
@@ -80,10 +83,11 @@ const TechList = styled.div`
   span {
     background: ${({ theme }) => theme.colors.woodDark};
     color: ${({ theme }) => theme.colors.ivoryLight};
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     border: 1px solid ${({ theme }) => theme.colors.accent};
+    font-weight: 500;
   }
 `;
 
@@ -103,6 +107,7 @@ const ProjectButton = styled.a`
   color: ${({ theme }) => theme.colors.ivoryLight};
   font-weight: bold;
   font-size: 0.9rem;
+  transition: color 0.3s ease;
   
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
@@ -144,67 +149,83 @@ const GitHubRepoLink = styled.a`
 `;
 
 const Projects = () => {
-    const myProjects = [
-        {
-            title: "Cine Millenium",
-            desc: "Aplicação de catálogo de filmes desenvolvida com React e Styled Components, consumindo APIs externas para dados em tempo real.",
-            tech: ["React", "Styled Components", "API Rest"],
-            link: "https://github.com/marciors92/cine-millenium",
-            reverse: false
-        },
-        {
-            title: "Diário de Bordo PWA",
-            desc: "Progressive Web App focado em offline-first, permitindo o registro de dados mesmo sem conexão, utilizando Service Workers.",
-            tech: ["PWA", "JavaScript", "Service Workers"],
-            link: "https://github.com/marciors92/diario-de-bordo-pwa",
-            reverse: true
-        },
-        {
-            title: "Projeto Delivery MFE",
-            desc: "Arquitetura avançada de Micro Front-ends para um sistema de delivery, garantindo escalabilidade e independência de módulos.",
-            tech: ["Micro Front-ends", "React", "Next.js"],
-            link: "https://github.com/marciors92/projeto-delivery-mfe",
-            reverse: false
-        }
-    ];
+  const myProjects = [
+    {
+      title: "♜ Diário de Bordo",
+      desc: "Aplicação Web Progressiva (PWA) desenvolvida para registro de atividades diárias, focada em resiliência offline e arquitetura modular. Utiliza Service Workers para suporte offline-first, persistência via LocalStorage e design system customizado com modo escuro.",
+      tech: ["PWA", "JavaScript ES6+", "Service Workers", "LocalStorage"],
+      link: "https://github.com/marciors92/diario-de-bordo-pwa",
+      image: "/assets/projects/diario-de-bordo.png",
+      reverse: false
+    },
+    {
+      title: "♛ MasterFood",
+      desc: "Aplicação de delivery escalável baseada em Micro Front-ends (MFE). Utiliza Webpack 5 e Module Federation para integrar apps independentes, garantindo autonomia de deploy e comunicação via Custom Events.",
+      tech: ["Micro Front-ends", "React", "Next.js", "Webpack 5"],
+      link: "https://github.com/marciors92/projeto-delivery-mfe",
+      image: "/assets/projects/masterfood.gif",
+      reverse: true
+    },
+    {
+      title: "♞ Lista de Afazeres",
+      desc: "Gerenciamento de tarefas avançado com Context API e Hooks customizados. Implementa Memoization (useMemo/React.memo) para otimização de ciclos de renderização e persistência de dados eficiente.",
+      tech: ["React", "Context API", "Hooks", "Memoization"],
+      link: "https://github.com/marciors92/todo-list-react-advanced",
+      image: "/assets/projects/lista-de-afazeres.gif",
+      reverse: false
+    },
+    {
+      title: "♚ Portfólio | Chess-Driven",
+      desc: "Single Page Application de alta performance com grid dinâmico baseado em lógica algorítmica de xadrez. Interface fluida com Styled Components, tipografia adaptativa e foco em engenharia front-end.",
+      tech: ["React", "Styled Components", "FEED", "Responsive Design"],
+      link: "https://github.com/marciors92/portfolio-engineer-frontend",
+      image: "/assets/projects/chess-driven.jpg",
+      reverse: true
+    }
+  ];
 
-    return (
-        <ProjectsSection id="projetos">
-            <SectionTitle>Jogadas Mestre (Projetos)</SectionTitle>
-            {myProjects.map((proj, index) => (
-                <ProjectCard key={index} reverse={proj.reverse}>
-                    <ProjectImage>
-                        [Preview do Projeto]
-                    </ProjectImage>
-                    <ProjectInfo>
-                        <h3>{proj.title}</h3>
-                        <p>{proj.desc}</p>
-                        <TechList>
-                            {proj.tech.map(t => <span key={t}>{t}</span>)}
-                        </TechList>
-                        <ButtonGroup>
-                            <ProjectButton href={proj.link} target="_blank">
-                                <FaGithub /> Código
-                            </ProjectButton>
-                        </ButtonGroup>
-                    </ProjectInfo>
-                </ProjectCard>
-            ))}
+  return (
+    <ProjectsSection id="projetos">
+      <SectionTitle>Jogadas Mestre (Projetos)</SectionTitle>
+      {myProjects.map((proj, index) => (
+        <ProjectCard key={index} reverse={proj.reverse}>
+          <ProjectImageContainer>
+            <img
+              src={proj.image}
+              alt={proj.title}
+              loading="lazy"
+              decoding="async"
+            />
+          </ProjectImageContainer>
+          <ProjectInfo>
+            <h3>{proj.title}</h3>
+            <p>{proj.desc}</p>
+            <TechList>
+              {proj.tech.map(t => <span key={t}>{t}</span>)}
+            </TechList>
+            <ButtonGroup>
+              <ProjectButton href={proj.link} target="_blank" rel="noopener noreferrer">
+                <FaGithub /> Código no GitHub
+              </ProjectButton>
+            </ButtonGroup>
+          </ProjectInfo>
+        </ProjectCard>
+      ))}
 
-            <MoreProjectsContainer>
-                <MoreProjectsText>
-                    Deseja visualizar mais jogadas técnicas?
-                </MoreProjectsText>
-                <GitHubRepoLink
-                    href="https://github.com/marciors92?tab=repositories"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <FaGithub /> Ver Repositório Completo
-                </GitHubRepoLink>
-            </MoreProjectsContainer>
-        </ProjectsSection>
-    );
+      <MoreProjectsContainer>
+        <MoreProjectsText>
+          Deseja visualizar mais jogadas técnicas?
+        </MoreProjectsText>
+        <GitHubRepoLink
+          href="https://github.com/marciors92?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaGithub /> Ver Repositório Completo
+        </GitHubRepoLink>
+      </MoreProjectsContainer>
+    </ProjectsSection>
+  );
 };
 
 export default Projects;
